@@ -2,7 +2,7 @@ const { User, Thought } = require('../models');
 
 
 const userController = {
-  getAllUser(req, res) {
+  getAllUsers(req, res) {
     User.find({})
       .populate({
         path: 'friends',
@@ -16,7 +16,7 @@ const userController = {
         res.sendStatus(400);
       });
   },
-    getUserById({ params }, res) {
+    getUsersById({ params }, res) {
         User.findOne({ _id: params.id })
         .populate({
             path: 'friends',

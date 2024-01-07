@@ -14,18 +14,18 @@ const {
 router.route('/').get(getAllThoughts).post(createThought);
 
 
-//Rene- why is this written like this? Doesn't look like a function
 router
     .route('/:id')
     .get(getThoughtById)
     .put(updateThought)
-    .delete(deleteThought);
+    .delete(deleteThought)
+    .delete(deleteReaction); //added to fix reaction delete issue
 
 //same as line 13, uses router variable and route method to tell it which path to grab data from and add a reaction 
 router.route("/:thoughtId/reactions").post(addReaction);
 
 
 //uses router variable and route method to tell it which path to grab data from and delete a reaction
-router.route("/thoughtId/reactions/:reactionId").delete(deleteReaction);
+router.route("/:thoughtId/reactions/:reactionId").delete(deleteReaction);
 
 module.exports = router;    
